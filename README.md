@@ -3,6 +3,43 @@ How to load a TorchScript model in C++.
 
 [Official Tutorial PyTorch](https://pytorch.org/tutorials/advanced/cpp_export.html#step-1-converting-your-pytorch-model-to-torch-script) - [YouTube](https://www.youtube.com/watch?v=RFq8HweBjHA&list=PLZAGo22la5t4UWx37MQDpXPFX3rTOGO3k)
 
+
+
+## Run
+The last step is building the application. For this, assume our example directory is laid out like this:
+```
+example-app/
+  CMakeLists.txt
+  example-app.cpp
+```
+
+We can now run the following commands to build the application from within the example-app/ folder:
+```
+mkdir build
+cd build
+cmake -DCMAKE_PREFIX_PATH=/path/to/libtorch ..
+cmake --build . --config Release
+```
+
+### 1. Run without model weights
+At **build** folder, run the following command:
+```
+./example-app
+```
+
+### 2. If you wanna revise the code
+At **build** folder, run the following command:
+```
+make
+./example-app
+```
+
+### 3. Run with model weights
+
+```
+./example-app <path_to_model>/traced_resnet_model.pt
+```
+
 ## Fix bug
 ### 1. No CMAKE_CXX_COMPILER could be found
 
